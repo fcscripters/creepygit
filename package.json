@@ -1,0 +1,29 @@
+{
+  "name": "creepygit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fcscripters/creepygit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fcscripters/creepygit/issues"
+  },
+  "homepage": "https://github.com/fcscripters/creepygit#readme",
+  "dependencies": {
+    "env2": "^2.0.4",
+    "request": "^2.65.0",
+    "routes": "^2.1.0"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.0",
+    "shot": "^1.7.0",
+    "tape": "^4.2.2"
+  }
+}
