@@ -10,6 +10,11 @@ var outer = {};
 outer.user = {};
 outer.following = [];
 outer.followers = [];
+outer.both = [];
+outer.followingOnly = [];
+outer.followersOnly = [];
+
+
 
 authentication = function(req, res, match) {
   console.log(match);
@@ -49,11 +54,11 @@ var getUserData = function() {
     });
     res.on('end', function() {
       var username = JSON.parse(body);
-      outer.user.gituser = username.login;
-      outer.user.photoURL = username.avatar_url;
+      outer.user['name'] = username.login;
+      outer.user['img'] = username.avatar_url;
+      outer.user['group'] = 14;
       console.log(outer.user);
       followingData();
-      followersData();
     });
   });
   userReq.setHeader('User-Agent', 'creepygit');
@@ -88,6 +93,7 @@ var getToken = function(code, callback) {
   });
   req.end(postData);
 };
+
 function followingData() {
   var options = {
     hostname: 'api.github.com',
@@ -96,7 +102,7 @@ function followingData() {
   };
 
   var req = https.request(options, function(res) {
-    console.log('github follow returns status code' + res.statusCode);
+    console.log('github following returns status code' + res.statusCode);
     var body = '';
     res.on('data', function(chunk) {
       body += chunk;
@@ -105,10 +111,11 @@ function followingData() {
       var followingBody = JSON.parse(body);
       outer.following = followingBody.map(function(object) {
         var newObj = {};
-        newObj['username'] = object.login;
-        newObj['photo'] = object.avatar_url;
+        newObj['name'] = object.login;
+        newObj['img'] = object.avatar_url;
         return newObj;
       });
+      followersData();
     });
 
   });
@@ -125,7 +132,7 @@ function followersData() {
   };
 
   var req = https.request(options, function(res) {
-    console.log('github follow returns status code' + res.statusCode);
+    console.log('github follower returns status code' + res.statusCode);
     var body = '';
     res.on('data', function(chunk) {
       body += chunk;
@@ -134,16 +141,86 @@ function followersData() {
       var followersBody = JSON.parse(body);
       outer.followers = followersBody.map(function(object) {
         var newObj = {};
-        newObj['username'] = object.login;
-        newObj['photo'] = object.avatar_url;
+        newObj['name'] = object.login;
+        newObj['img'] = object.avatar_url;
         return newObj;
       });
-      console.log(outer.followers);
+      // bothFollows();
+
+      var both = function(callback) {
+        outer.both = outer.followers.filter(function(elem) {
+          return nameInArray(elem['name'], outer.following);
+        });
+        callback();
+
+      };
+
+      both(returnFollowersFollowing);
+
+
+
     });
 
   });
   req.setHeader('User-Agent', 'creepygit');
   req.end();
 }
+
+function nameInArray(name, array) {
+  var found = false;
+  array.forEach(function(aElem) {
+    if (aElem['name'] === name) {
+      found = true;
+    }
+  });
+  return found;
+}
+
+function nameNotInArray(name, array) {
+  var found = true;
+  array.forEach(function(aElem) {
+    if (aElem['name'] == name) {
+      found = false;
+    }
+  });
+  return found;
+}
+
+function returnFollowersFollowing() {
+
+  outer.followersOnly = outer.followers.filter(function(elem) {
+    return nameNotInArray(elem['name'], outer.both);
+
+  });
+
+  outer.followingOnly = outer.following.filter(function(elem) {
+
+    return nameNotInArray(elem['name'], outer.both);
+
+  });
+
+  outer.both.forEach(function(element, index) {
+        element.group = 5;
+  });
+
+  outer.followingOnly.forEach(function(element, index) {
+        element.group = 1;
+  });
+
+  outer.followingOnly.forEach(function(element, index) {
+        element.group = 7;
+  });
+
+  // console.log('-------outer.both--------', outer.both);
+  // console.log('-------following only--------', outer.followingOnly);
+  // console.log('-------followers only--------', outer.followersOnly);
+
+  var concatArray = outer.both.concat(outer.followingOnly).concat(outer.followersOnly);
+  concatArray.unshift(outer.user);
+  console.log(concatArray);
+}
+
+
+
 
 module.exports = authentication;
