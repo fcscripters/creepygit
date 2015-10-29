@@ -1,0 +1,25 @@
+{ "nodes": [
+		{"name": "sohil","img": "https://avatars1.githubusercontent.com/u/2305591?v=3&s=400","group":1},
+
+	    {"name": "Tormod","img": "https://avatars3.githubusercontent.com/u/11330267?v=3&s=460","group":5},
+	    
+	    {"name": "Gethin","img": "https://avatars3.githubusercontent.com/u/12121805?v=3&s=400","group":7},
+        
+        { "name": "Conor","img": "https://avatars0.githubusercontent.com/u/12072531?v=3&s=460","group":8}
+        ],
+ "links": [{
+            "target": 1,
+            "source": 0,
+            "value": 10
+        }, {
+            "target": 2,
+            "source": 0,
+            "value": 10
+        },
+        {
+            "target": 3,
+            "source": 0,
+            "value": 10
+        }
+        ]
+ }
