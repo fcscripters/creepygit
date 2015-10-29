@@ -6,6 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "scripts": {
+    "test": "./node_modules/.bin/tape ./test/* & npm run coverage",
+    "start": "node server.js",
+    "coverage": "./node_modules/.bin/istanbul cover test/*",
+    "codeclimate": "CODECLIMATE_REPO_TOKEN=4b8b02d37b6765b9ab7c14e2442502a5342414578a67bed43ea717a021740890 codeclimate-test-reporter < ./coverage/lcov.info"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fcscripters/creepygit.git"
@@ -25,5 +31,8 @@
     "istanbul": "^0.4.0",
     "shot": "^1.7.0",
     "tape": "^4.2.2"
+  },
+  "engines": {
+    "node": "4.1.1"
   }
 }
