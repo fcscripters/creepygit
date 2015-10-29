@@ -1,5 +1,4 @@
 [![Code Climate](https://codeclimate.com/github/fcscripters/creepygit/badges/gpa.svg)](https://codeclimate.com/github/fcscripters/creepygit)
-
 [![Test Coverage](https://codeclimate.com/github/fcscripters/creepygit/badges/coverage.svg)](https://codeclimate.com/github/fcscripters/creepygit/coverage)
 
 # Git Hub Followers Visualisation 'Creepy Git'
