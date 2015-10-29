@@ -15,7 +15,6 @@ outer.followingOnly = [];
 outer.followersOnly = [];
 
 
-
 authentication = function(req, res, match) {
   console.log(match);
   var urlArray = req.url.split('/');
@@ -153,14 +152,8 @@ function followersData() {
           return nameInArray(elem['name'], outer.following);
         });
         callback();
-
       };
-
       both(returnFollowersFollowing);
-
-
-
-
     });
 
   });
@@ -205,7 +198,7 @@ function returnFollowersFollowing() {
         element.group = 5;
   });
 
-  outer.followingOnly.forEach(function(element, index) {
+  outer.followersOnly.forEach(function(element, index) {
         element.group = 1;
   });
 
@@ -220,9 +213,27 @@ function returnFollowersFollowing() {
   var concatArray = outer.both.concat(outer.followingOnly).concat(outer.followersOnly);
   concatArray.unshift(outer.user);
   console.log(concatArray);
+
+var jsonObj = {
+  nodes : concatArray,
+  links:[]
+};
+
+ concatArray.forEach(function (obj,i){
+  if(i!==concatArray.length -1){
+    jsonObj.links.push({'source':i+1,'target':0,'value':1});
+  }
+});
+
+console.log(jsonObj);
+fs.writeFile("./public/gitHubUsers.json", JSON.stringify(jsonObj),
+  function(err) {
+    if (err) {
+      return console.log(err);
+    }
+  });
+
 }
-
-
 
 
 module.exports = authentication;
