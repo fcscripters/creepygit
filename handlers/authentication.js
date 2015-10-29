@@ -116,6 +116,7 @@ function followingData() {
         return newObj;
       });
       followersData();
+
     });
 
   });
@@ -156,6 +157,7 @@ function followersData() {
       };
 
       both(returnFollowersFollowing);
+
 
 
 
