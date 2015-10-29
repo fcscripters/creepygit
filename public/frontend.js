@@ -13,7 +13,6 @@
 //     request.send();
 //
 // });
-
 var width = 960,
     height = 500;
 
@@ -164,3 +163,7 @@ svg.append("circle")
         });
     });
 });
+
+
+
+module.exports = wrapped;

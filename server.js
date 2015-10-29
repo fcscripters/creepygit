@@ -4,6 +4,7 @@ var router = require('routes')();
 var generalHandler = require('./handlers/generalHandler');
 var fs =require('fs');
 var port = process.env.PORT || 8000;
+var io = require('socket.io')(server);
 
 router.addRoute('/', require('./handlers/home.js'));
 router.addRoute('/auth', require('./handlers/authentication.js'));
@@ -23,5 +24,10 @@ function handler(req, res) {
   }
 }
 
-http.createServer(handler).listen(port);
-console.log('you are listening on: ', port );
+var server = http.createServer(handler)
+  server.listen(port,function () {
+  console.log('listening on server:' + (process.env.PORT || 8000));
+});
+
+
+module.exports = server;
