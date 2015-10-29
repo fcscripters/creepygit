@@ -1,18 +1,18 @@
-var login = document.getElementById("loginButton")
-
-login.addEventListener('click', function() {
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-        if (request.readyState === 4) {
-            if (request.responseText.length > 1) {
-                console.log(request.responseText);
-            }
-        }
-    };
-    request.open('GET', '//github.com/login/oauth/authorize?client_id=049b19879974de4eb945', true)
-    request.send()
-
-})
+// var login = document.getElementById("loginButton");
+//
+// login.addEventListener('click', function() {
+//     var request = new XMLHttpRequest();
+//     request.onreadystatechange = function() {
+//         if (request.readyState === 4) {
+//             if (request.responseText.length > 1) {
+//                 console.log(request.responseText);
+//             }
+//         }
+//     };
+//     request.open('GET', '/auth', true);
+//     request.send();
+//
+// });
 
 var width = 960,
     height = 500;
@@ -56,7 +56,7 @@ d3.json("gitHubUsers.json", function(error, graph) {
 
     node.append("circle")
         .attr("r", "40")
-        
+
     node.append('text')
         .attr("class", "nodetext")
         .attr("dx", 40)
