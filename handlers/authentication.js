@@ -88,6 +88,7 @@ var getToken = function(code, callback) {
   });
   req.end(postData);
 };
+
 function followingData() {
   var options = {
     hostname: 'api.github.com',
@@ -109,6 +110,7 @@ function followingData() {
         newObj['photo'] = object.avatar_url;
         return newObj;
       });
+      console.log('outer Following',outer.following);
     });
 
   });
@@ -138,7 +140,7 @@ function followersData() {
         newObj['photo'] = object.avatar_url;
         return newObj;
       });
-      console.log(outer.followers);
+      console.log('OUTER FOLLOWER',outer.followers);
     });
 
   });
