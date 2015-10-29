@@ -13,6 +13,8 @@ outer.followers = [];
 outer.both = [];
 outer.followingOnly = [];
 outer.followersOnly = [];
+var d3;
+
 
 
 authentication = function(req, res, match) {
@@ -195,15 +197,15 @@ function returnFollowersFollowing() {
   });
 
   outer.both.forEach(function(element, index) {
-        element.group = 5;
+    element.group = 5;
   });
 
   outer.followersOnly.forEach(function(element, index) {
-        element.group = 1;
+    element.group = 1;
   });
 
   outer.followingOnly.forEach(function(element, index) {
-        element.group = 7;
+    element.group = 7;
   });
 
   // console.log('-------outer.both--------', outer.both);
@@ -212,28 +214,36 @@ function returnFollowersFollowing() {
 
   var concatArray = outer.both.concat(outer.followingOnly).concat(outer.followersOnly);
   concatArray.unshift(outer.user);
-  console.log(concatArray);
 
-var jsonObj = {
-  nodes : concatArray,
-  links:[]
-};
+  var jsonObj = {
+    nodes: concatArray,
+    links: []
+  };
 
- concatArray.forEach(function (obj,i){
-  if(i!==concatArray.length -1){
-    jsonObj.links.push({'source':i+1,'target':0,'value':1});
-  }
-});
-
-console.log(jsonObj);
-fs.writeFile("./public/gitHubUsers.json", JSON.stringify(jsonObj),
-  function(err) {
-    if (err) {
-      return console.log(err);
+  concatArray.forEach(function(obj, i) {
+    if (i !== concatArray.length - 1) {
+      jsonObj.links.push({
+        'source': i + 1,
+        'target': 0,
+        'value': 1
+      });
     }
+
   });
 
-}
 
+  // console.log(jsonObj);
+  fs.writeFile("./public/gitHubUsers.json", JSON.stringify(jsonObj),
+    function(err) {
+      if (err) {
+        return console.log(err);
+      }
+    });
+
+
+
+
+
+}
 
 module.exports = authentication;
