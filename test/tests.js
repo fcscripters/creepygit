@@ -5,6 +5,7 @@ var generalHandler = require('../handlers/generalHandler');
 var testrequest = requre('request');
 var router = require('routes')();
 
+
 tape("check to see if the server is running ok", function (t) {
   shot.inject(generalHandler, {method: 'get', url: '/'},function (res){
     var result = res.statusCode;
