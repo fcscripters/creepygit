@@ -9,3 +9,12 @@ function manageConnection(socket) {
     console.log('user disconnected');
   });
 }
+
+socket.on('question in', function(msg) {
+
+    console.log("question in")
+     //io.emit('question out',filterReply2);
+
+   }
+
+ });

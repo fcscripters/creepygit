@@ -9,13 +9,14 @@ A visualisation of followers/followed on Github. The final hurrah of the mighty 
 
 ## Who?
 
-User of Github who would like to build their network and improve the visibility and therefore reuse of their repos.
+User of Github who would like to build their network and improve the visibility and thus uptake and reuse of their repos.
 
 ## How to run
 
 ### To run
 
-The app is available on Heroku here.
+The app is available on Heroku at:
+https://pure-reef-8732.herokuapp.com/
 
 ### To run locally
 ```
@@ -29,7 +30,7 @@ https://github.com/foundersandcoders/morning-challenge/tree/master/routerChallen
 
 This involves two files: server.js, router.js and handler.js
 
-## Categories of Followers
+## Categories of Followers/Non-Followers to be displayed
 
 Green - Follow each other
 
@@ -48,9 +49,18 @@ Front-end tests will be achieved using Qunit
 
 ## Dependencies
 
+env2
+request
+routes
 
 ## Recommended Reading
 
-##Contributors
+Git Hub API
+
+https://developer.github.com/v3/
+
+D3
+
+## Contributors
 
 Gethin, Sohil, Conor, Tormod
