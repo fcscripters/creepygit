@@ -4,6 +4,7 @@ var request = require('request');
 var fs = require('fs');
 var env = require('env2')('./config.env');
 var index = fs.readFileSync(__dirname + '/../public/index.html');
+var d3 = fs.readFileSync(__dirname + '/../public/d3.html');
 var querystring = require('querystring');
 var sessions = {};
 var outer = {};
@@ -13,7 +14,6 @@ outer.followers = [];
 outer.both = [];
 outer.followingOnly = [];
 outer.followersOnly = [];
-var d3;
 
 
 
@@ -38,7 +38,7 @@ function setToken(gitToken, res, callback) {
     "Set-Cookie": 'access=' + cookie
   });
   callback();
-  res.end(index);
+  res.end(d3);
 }
 
 var getUserData = function() {
@@ -232,7 +232,7 @@ function returnFollowersFollowing() {
   });
 
 
-  // console.log(jsonObj);
+  console.log(jsonObj);
   fs.writeFile("./public/gitHubUsers.json", JSON.stringify(jsonObj),
     function(err) {
       if (err) {

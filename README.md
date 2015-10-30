@@ -3,6 +3,8 @@
 
 # Git Hub Followers Visualisation 'Creepy Git'
 
+to view our app please visit [here](https://pure-reef-8732.herokuapp.com/)
+
 ## What?
 
 A visualisation of followers/followed on Github.A user will be able to authenticate their session and see a visual display of if they are follwoing somone and that user is not following them back and vice a versa. The final hurrah of the mighty fcscripters.
