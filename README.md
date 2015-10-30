@@ -60,7 +60,7 @@ Git Hub API
 
 https://developer.github.com/v3/
 
-D3 Tutorials
+D3 Tutorials were a huge help
 
 http://bl.ocks.org/mbostock/4062045
 http://bl.ocks.org/aaizemberg/78bd3dade9593896a59d
