@@ -8,6 +8,11 @@ var io = require('socket.io')(server);
 
 router.addRoute('/', require('./handlers/home.js'));
 router.addRoute('/auth', require('./handlers/authentication.js'));
+router.addRoute('/viewmap', require('./handlers/viewMap.js'));
+// router.addRoute('/d3file', require('./handlers/d3Handler'));
+
+
+
 
 
 

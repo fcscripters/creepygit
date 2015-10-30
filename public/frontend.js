@@ -1,33 +1,39 @@
-// var login = document.getElementById("loginButton");
-//
-// login.addEventListener('click', function() {
-//     var request = new XMLHttpRequest();
-//     request.onreadystatechange = function() {
-//         if (request.readyState === 4) {
-//             if (request.responseText.length > 1) {
-//                 console.log(request.responseText);
-//             }
-//         }
-//     };
-//     request.open('GET', '/auth', true);
-//     request.send();
-//
-// });
-var width = 960,
-    height = 500;
+var viewMap = document.getElementById("viewMap");
 
-var color = d3.scale.category20();
+viewMap.addEventListener('click', function() {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (request.readyState === 4) {
+                console.log("YES ITS WORKING!!!");
+                // console.log(request.responseText);
+                // var d3JSON = request.responseText;
+                wrapped();
+        }
+    };
+    request.open('GET', '/viewmap', true);
+    request.send();
 
-var force = d3.layout.force()
-    .charge(-2000)
-    .linkDistance(200)
-    .size([width, height]);
+});
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+    function wrapped(){
 
-d3.json("gitHubUsers.json", function(error, graph) {
+
+      var width = 960,
+          height = 500;
+
+      var color = d3.scale.category20();
+
+      var force = d3.layout.force()
+          .charge(-2000)
+          .linkDistance(200)
+          .size([width, height]);
+
+      var svg = d3.select("body").append("svg")
+          .attr("width", width)
+          .attr("height", height);
+
+
+d3.json("/gitHubUsers.json", function(error, graph) {
     if (error) throw error;
 
     force
@@ -48,6 +54,8 @@ d3.json("gitHubUsers.json", function(error, graph) {
         .enter().append("g")
         .attr("class", "node")
         .style("fill", function(d) {
+            console.log(color(d.group));
+            console.log(color);
             return color(d.group);
         })
         .call(force.drag);
@@ -64,32 +72,6 @@ d3.json("gitHubUsers.json", function(error, graph) {
         .text(function(d) {
             return d.name
         });
-/*
-var defs = svg.append("defs").attr("id", "imgdefs")
-
-var userImage = defs.append("pattern")
-                        .attr("id", "userImage")
-                        .attr("height", 1)
-                        .attr("width", 1)
-                        .attr("x", "0")
-                        .attr("y", "0")
-
-userImage.append("image")
-     .attr("x", -130)
-     .attr("y", -220)
-     .attr("height", 640)
-     .attr("width", 480)
-     .attr("xlink:href", imgurl)
-
-svg.append("circle")
-    .attr("r", 100)
-    .attr("cy", 80)
-    .attr("cx", 120)
-    .attr("fill", "url(#catpattern)")
-
-
-
-*/
 
     node.append("svg:image")
         .attr("xlink:href", function(d) {
@@ -103,6 +85,7 @@ svg.append("circle")
         })
         .attr("height", 50)
         .attr("width", 50)
+        .attr("class", "userPics")
         .style("border-radius", "50px")
         .on('mouseenter', function() {
             // select element in current context
@@ -163,7 +146,4 @@ svg.append("circle")
         });
     });
 });
-
-
-
-module.exports = wrapped;
+}

@@ -6,6 +6,7 @@
 ## What?
 
 A visualisation of followers/followed on Github. The final hurrah of the mighty fcscripters.
+Using Github to authenticate, the Github API to garner information on following and followers and, of course, D3 to display the data.
 
 ## Who?
 
@@ -59,7 +60,10 @@ Git Hub API
 
 https://developer.github.com/v3/
 
-D3
+D3 Tutorials
+
+http://bl.ocks.org/mbostock/4062045
+http://bl.ocks.org/aaizemberg/78bd3dade9593896a59d
 
 ## Contributors
 

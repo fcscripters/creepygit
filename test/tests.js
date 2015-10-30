@@ -2,7 +2,7 @@ var tape = require('tape');
 var shot = require('shot');
 var assert = require('assert');
 var generalHandler = require('../handlers/generalHandler');
-var testrequest = requre('request');
+var testrequest = require('request');
 var router = require('routes')();
 
 
