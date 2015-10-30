@@ -7,7 +7,7 @@
         stroke: #999;
         stroke-opacity: .6;
       }
-      image{
+      .image{
         border-radius: 50px;
       }
       @import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600);
@@ -21,6 +21,10 @@
         fill: none;
         stroke-width: 2px;
       }
+      #both { color:green;}
+      #nonFollowers { color:red;}
+      #nonFollowing { color:blue;}
+
     </style>
     <title>Creepy Git</title>
   </head>
@@ -29,6 +33,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <h2>Welcome to Creepy Git</h2>
     <h4>Please login to view how popular you really are on github.</h4>
+    <ul>
+      <li id="both">Followers you are following</li>
+      <li id="nonFollowers">The user's you are following but who are not following you</li>
+      <li id="nonFollowing">Followers that you are not following</li>
+    </ul>
+
         <a href=https://github.com/login/oauth/authorize?client_id=049b19879974de4eb945>LOGIN</a>
 
 

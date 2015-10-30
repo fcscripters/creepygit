@@ -54,6 +54,8 @@ d3.json("/gitHubUsers.json", function(error, graph) {
         .enter().append("g")
         .attr("class", "node")
         .style("fill", function(d) {
+            console.log(color(d.group));
+            console.log(color);
             return color(d.group);
         })
         .call(force.drag);
@@ -70,32 +72,6 @@ d3.json("/gitHubUsers.json", function(error, graph) {
         .text(function(d) {
             return d.name
         });
-/*
-var defs = svg.append("defs").attr("id", "imgdefs")
-
-var userImage = defs.append("pattern")
-                        .attr("id", "userImage")
-                        .attr("height", 1)
-                        .attr("width", 1)
-                        .attr("x", "0")
-                        .attr("y", "0")
-
-userImage.append("image")
-     .attr("x", -130)
-     .attr("y", -220)
-     .attr("height", 640)
-     .attr("width", 480)
-     .attr("xlink:href", imgurl)
-
-svg.append("circle")
-    .attr("r", 100)
-    .attr("cy", 80)
-    .attr("cx", 120)
-    .attr("fill", "url(#catpattern)")
-
-
-
-*/
 
     node.append("svg:image")
         .attr("xlink:href", function(d) {
@@ -109,6 +85,7 @@ svg.append("circle")
         })
         .attr("height", 50)
         .attr("width", 50)
+        .attr("class", "userPics")
         .style("border-radius", "50px")
         .on('mouseenter', function() {
             // select element in current context
