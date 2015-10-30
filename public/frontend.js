@@ -33,7 +33,7 @@ viewMap.addEventListener('click', function() {
           .attr("height", height);
 
 
-d3.json("gitHubUsers.json", function(error, graph) {
+d3.json("/gitHubUsers.json", function(error, graph) {
     if (error) throw error;
 
     force
