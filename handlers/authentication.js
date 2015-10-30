@@ -197,7 +197,7 @@ function returnFollowersFollowing() {
   });
 
   outer.both.forEach(function(element, index) {
-    element.group = 3;
+    element.group = 5;
   });
 
   outer.followersOnly.forEach(function(element, index) {
@@ -205,7 +205,7 @@ function returnFollowersFollowing() {
   });
 
   outer.followingOnly.forEach(function(element, index) {
-    element.group = 2;
+    element.group = 7;
   });
 
   // console.log('-------outer.both--------', outer.both);
