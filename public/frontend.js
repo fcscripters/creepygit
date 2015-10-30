@@ -1,31 +1,37 @@
-// var login = document.getElementById("loginButton");
-//
-// login.addEventListener('click', function() {
-//     var request = new XMLHttpRequest();
-//     request.onreadystatechange = function() {
-//         if (request.readyState === 4) {
-//             if (request.responseText.length > 1) {
-//                 console.log(request.responseText);
-//             }
-//         }
-//     };
-//     request.open('GET', '/auth', true);
-//     request.send();
-//
-// });
-var width = 960,
-    height = 500;
+var viewMap = document.getElementById("viewMap");
 
-var color = d3.scale.category20();
+viewMap.addEventListener('click', function() {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (request.readyState === 4) {
+                console.log("YES ITS WORKING!!!");
+                // console.log(request.responseText);
+                // var d3JSON = request.responseText;
+                wrapped();
+        }
+    };
+    request.open('GET', '/viewmap', true);
+    request.send();
 
-var force = d3.layout.force()
-    .charge(-2000)
-    .linkDistance(200)
-    .size([width, height]);
+});
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+    function wrapped(){
+
+
+      var width = 960,
+          height = 500;
+
+      var color = d3.scale.category20();
+
+      var force = d3.layout.force()
+          .charge(-2000)
+          .linkDistance(200)
+          .size([width, height]);
+
+      var svg = d3.select("body").append("svg")
+          .attr("width", width)
+          .attr("height", height);
+
 
 d3.json("gitHubUsers.json", function(error, graph) {
     if (error) throw error;
@@ -163,7 +169,4 @@ svg.append("circle")
         });
     });
 });
-
-
-
-module.exports = wrapped;
+}
