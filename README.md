@@ -16,17 +16,17 @@ User of Github who would like to build their network and improve the visibility 
 
 ## How to run
 
-### To run
-
-The app is available on Heroku here.
 
 ### To run locally
+
 Clone this repo and install modules ``` npm install ```
 
 Then run the server. 
-```
+
 node server.js
 ```
+ONCE YOU HAVE AUTHENTICATED THROUGH GIT HUB, GO BACK TO LOCALHOST:8000 IN YOUR BROWSER, AND YOU WILL SEE YOUR FOLLOWERS MAP.
+
 Router
 
 We are using the router outlined in last week's morning challenge, this uses the 'routes' module details of the method can be found. 
