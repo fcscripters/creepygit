@@ -21,8 +21,8 @@ viewMap.addEventListener('click', function() {
       var width = 960,
           height = 500;
 
-      var color = d3.scale.category20();
-
+      var color = d3.scale.category10();
+          console.log(color.range())  ;
       var force = d3.layout.force()
           .charge(-2000)
           .linkDistance(200)
@@ -53,16 +53,18 @@ d3.json("/gitHubUsers.json", function(error, graph) {
         .data(graph.nodes)
         .enter().append("g")
         .attr("class", "node")
-        .style("fill", function(d) {
-            console.log(color(d.group));
-            console.log(color);
-            return color(d.group);
-        })
+        
         .call(force.drag);
 
 
     node.append("circle")
         .attr("r", "40")
+        .style("fill", function(d) {
+            console.log(d.group);
+          
+            return color(d.group);
+        })
+
 
     node.append('text')
         .attr("class", "nodetext")
