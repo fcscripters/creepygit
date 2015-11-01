@@ -15,11 +15,11 @@ viewMap.addEventListener('click', function() {
 
 });
 
-    function wrapped(){
+function wrapped(){
 
 
       var width = 960,
-          height = 500;
+          height = 700;
 
       var color = d3.scale.category10();
           console.log(color.range())  ;
@@ -63,16 +63,6 @@ d3.json("/gitHubUsers.json", function(error, graph) {
           return d.group == 3  ? "green" : d.group ==2 ? "orange" : d.group == 4 ? "red" : "blue";
         })
 
-
-    node.append('text')
-        .attr("class", "nodetext")
-        .attr("dx", 40)
-        .attr("dy", 40)
-        .style("fill", "black")
-        .text(function(d) {
-            return d.name
-        });
-
     node.append("svg:image")
         .attr("xlink:href", function(d) {
             return d.img;
@@ -86,7 +76,6 @@ d3.json("/gitHubUsers.json", function(error, graph) {
         .attr("height", 50)
         .attr("width", 50)
         .attr("class", "userPics")
-        .style("border-radius", "50px")
         .on('mouseenter', function() {
             // select element in current context
             d3.select(this)
@@ -113,11 +102,19 @@ d3.json("/gitHubUsers.json", function(error, graph) {
                 .attr("width", 50);
         });
 
-
-
-
-
-
+      
+    node.append('text').append("a")
+        .attr("target","_blank")
+        .attr("class", "nodetext")
+        .attr("dx", 60)
+        .attr("dy", 60)
+        .attr("xlink:href", function(d) { 
+            console.log(d.html_url)
+         return d.html_url
+         })
+        .text(function(d) {
+            return d.name
+        });
 
 
 
