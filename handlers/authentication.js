@@ -57,7 +57,7 @@ var getUserData = function() {
       var username = JSON.parse(body);
       outer.user['name'] = username.login;
       outer.user['img'] = username.avatar_url;
-      outer.user['group'] = 14;
+      outer.user['group'] = 1; ////////first user circle colour
       console.log(outer.user);
       followingData();
     });
@@ -197,15 +197,15 @@ function returnFollowersFollowing() {
   });
 
   outer.both.forEach(function(element, index) {
-    element.group = 5;
+    element.group = 3;
   });
 
   outer.followersOnly.forEach(function(element, index) {
-    element.group = 1;
+    element.group = 2;
   });
 
   outer.followingOnly.forEach(function(element, index) {
-    element.group = 7;
+    element.group = 4;
   });
 
   // console.log('-------outer.both--------', outer.both);

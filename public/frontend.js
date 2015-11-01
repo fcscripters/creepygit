@@ -60,9 +60,7 @@ d3.json("/gitHubUsers.json", function(error, graph) {
     node.append("circle")
         .attr("r", "40")
         .style("fill", function(d) {
-            console.log(d.group);
-          
-            return color(d.group);
+          return d.group == 3  ? "green" : d.group ==2 ? "orange" : d.group == 4 ? "red" : "blue";
         })
 
 
