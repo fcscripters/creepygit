@@ -1,22 +1,22 @@
- .link {
-     stroke: #999;
-     stroke-opacity: .6;
- }
- 
- image {
-     border-radius: 50px;
- }
- 
- @import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600);
- 
- body {
-     font-family: "Source Code Pro", Consolas, monaco, monospace;
-     line-height: 160%;
-     font-size: 16px;
-     margin: 0;
- }
- 
- path.link {
-     fill: none;
-     stroke-width: 2px;
- }
+   .link {
+        stroke: #999;
+        stroke-opacity: .6;
+      }
+      image{
+        border-radius: 50px;
+      }
+      @import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600);
+      body {
+        font-family: "Source Code Pro", Consolas, monaco, monospace;
+        line-height: 160%;
+        font-size: 16px;
+        margin: 0;
+      }
+      path.link {
+        fill: none;
+        stroke-width: 2px;
+      }
+      
+      #both { color:green;}
+      #nonFollowers { color:red;}
+      #nonFollowing { color:blue;}

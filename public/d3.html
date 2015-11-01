@@ -21,6 +21,9 @@
         fill: none;
         stroke-width: 2px;
       }
+      #both { color:green;}
+      #nonFollowers { color:red;}
+      #nonFollowing { color:orange;}
     </style>
     <title>Creepy Git</title>
   </head>
@@ -30,6 +33,11 @@
     <h2>Welcome to Creepy Git</h2>
 
     <h4>We are done Loading! Please click the button below to view your map!</h4>
+      <ul>
+      <li id="both">Followers you are following</li>
+      <li id="nonFollowers">The user's you are following but who are not following you</li>
+      <li id="nonFollowing">Followers that you are not following</li>
+    </ul>
     <button id="viewMap">View Map</button>
 
     <script type="text/javascript" src="/frontend.js"></script>
