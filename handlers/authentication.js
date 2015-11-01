@@ -18,7 +18,7 @@ outer.followersOnly = [];
 
 
 authentication = function(req, res, match) {
-  console.log(match);
+ // console.log(match);
   var urlArray = req.url.split('/');
   var code = urlArray[2].split('=')[1];
   getToken(code, function(data) {
@@ -57,9 +57,10 @@ var getUserData = function() {
       var username = JSON.parse(body);
       outer.user['name'] = username.login;
       outer.user['img'] = username.avatar_url;
+      outer.user['html_url'] = username.html_url;
       outer.user['group'] = 1; ////////first user circle colour
-      console.log(outer.user);
       followingData();
+
     });
   });
   userReq.setHeader('User-Agent', 'creepygit');
@@ -69,7 +70,7 @@ var getUserData = function() {
 
 
 var getToken = function(code, callback) {
-  console.log('gitHub code: \"' + code + "\"");
+ // console.log('gitHub code: \"' + code + "\"");
   var postData = querystring.stringify({
     client_id: process.env.clientID,
     client_secret: process.env.clientSecret,
@@ -83,7 +84,7 @@ var getToken = function(code, callback) {
   };
 
   var req = https.request(options, function(res) {
-    console.log('github return statusCode: ' + res.statusCode);
+   // console.log('github return statusCode: ' + res.statusCode);
     var body = '';
     res.on('data', function(chunk) {
       body += chunk;
@@ -103,7 +104,7 @@ function followingData() {
   };
 
   var req = https.request(options, function(res) {
-    console.log('github following returns status code' + res.statusCode);
+   // console.log('github following returns status code' + res.statusCode);
     var body = '';
     res.on('data', function(chunk) {
       body += chunk;
@@ -114,6 +115,7 @@ function followingData() {
         var newObj = {};
         newObj['name'] = object.login;
         newObj['img'] = object.avatar_url;
+        newObj['html_url']=object.html_url;
         return newObj;
       });
       followersData();
@@ -134,7 +136,7 @@ function followersData() {
   };
 
   var req = https.request(options, function(res) {
-    console.log('github follower returns status code' + res.statusCode);
+   // console.log('github follower returns status code' + res.statusCode);
     var body = '';
     res.on('data', function(chunk) {
       body += chunk;
@@ -143,8 +145,10 @@ function followersData() {
       var followersBody = JSON.parse(body);
       outer.followers = followersBody.map(function(object) {
         var newObj = {};
+       // console.log('OBJECT',object)
         newObj['name'] = object.login;
         newObj['img'] = object.avatar_url;
+        newObj['html_url']=object.html_url;
         return newObj;
       });
       // bothFollows();
@@ -232,7 +236,7 @@ function returnFollowersFollowing() {
   });
 
 
-  console.log(jsonObj);
+  //console.log(jsonObj);
   fs.writeFile("./public/gitHubUsers.json", JSON.stringify(jsonObj),
     function(err) {
       if (err) {

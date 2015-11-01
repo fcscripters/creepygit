@@ -13,11 +13,6 @@ router.addRoute('/viewmap', require('./handlers/viewMap.js'));
 
 
 
-
-
-
-
-
 function handler(req, res) {
   var path = url.parse(req.url).pathname;
   var match = router.match(path);
